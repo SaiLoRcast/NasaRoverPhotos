@@ -1,5 +1,6 @@
 package ru.sailorcast.nasaroverphotos.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,14 +18,20 @@ import coil.compose.AsyncImage
 import ru.sailorcast.nasaroverphotos.data.model.Photo
 
 @Composable
-fun RoverPhotoItem(photo: Photo) {
+fun RoverPhotoItem(
+    photo: Photo, onItemClicked: (Photo) -> Unit
+) {
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(8.dp),
     ) {
-        Box {
+        Box(
+            Modifier.clickable {
+                onItemClicked(photo)
+            }
+        ) {
             Row {
                 AsyncImage(
                     modifier = Modifier

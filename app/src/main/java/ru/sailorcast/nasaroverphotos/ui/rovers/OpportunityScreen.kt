@@ -5,11 +5,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import ru.sailorcast.nasaroverphotos.data.model.Photo
 import ru.sailorcast.nasaroverphotos.ui.components.RoverPhotoItem
 import ru.sailorcast.nasaroverphotos.ui.home.NasaRoverPhotosViewModel
 
 @Composable
-fun OpportunityScreen(viewModel: NasaRoverPhotosViewModel) {
+fun OpportunityScreen(viewModel: NasaRoverPhotosViewModel,onItemClicked: (Photo) -> Unit) {
 
     val photos = viewModel.opportunityPhotos.collectAsState()
 
@@ -19,7 +20,7 @@ fun OpportunityScreen(viewModel: NasaRoverPhotosViewModel) {
 
     LazyColumn() {
         items(photos.value) {
-            RoverPhotoItem(it)
+            RoverPhotoItem(it, onItemClicked)
         }
     }
 

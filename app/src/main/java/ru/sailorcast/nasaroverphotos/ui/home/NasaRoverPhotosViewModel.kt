@@ -14,6 +14,9 @@ class NasaRoverPhotosViewModel(private val repository: NasaRoverPhotosRepository
     private val _curiosityPhotos = MutableStateFlow<List<Photo>>(listOf())
     val curiosityPhotos: StateFlow<List<Photo>> = _curiosityPhotos
 
+    private val _currentPhoto = MutableStateFlow<Photo?>(null)
+    val currentPhoto: StateFlow<Photo?> = _currentPhoto
+
     private val _opportunityPhotos = MutableStateFlow<List<Photo>>(listOf())
     val opportunityPhotos: StateFlow<List<Photo>> = _opportunityPhotos
 
@@ -57,6 +60,10 @@ class NasaRoverPhotosViewModel(private val repository: NasaRoverPhotosRepository
                 _error.value = e.message ?: ""
             }
         }
+    }
+
+    fun setCurrentPhoto(photo: Photo) {
+        _currentPhoto.value = photo
     }
 
 }

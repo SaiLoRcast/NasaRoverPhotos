@@ -13,7 +13,7 @@ data class Photo(
     val img_src: String,
     val rover: Rover,
     val sol: String
-)
+) : java.io.Serializable
 
 @Serializable
 data class Camera(

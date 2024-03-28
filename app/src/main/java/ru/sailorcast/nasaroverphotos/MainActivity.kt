@@ -3,8 +3,8 @@ package ru.sailorcast.nasaroverphotos
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import org.koin.androidx.compose.navigation.koinNavViewModel
-import ru.sailorcast.nasaroverphotos.ui.home.HomeScreen
+import androidx.navigation.compose.rememberNavController
+import ru.sailorcast.nasaroverphotos.navigation.RootNavHost
 import ru.sailorcast.nasaroverphotos.ui.theme.NasaRoverPhotosTheme
 
 class MainActivity : ComponentActivity() {
@@ -12,7 +12,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             NasaRoverPhotosTheme {
-                HomeScreen(viewModel = koinNavViewModel())
+                RootNavHost(navHostController = rememberNavController())
             }
         }
     }
